@@ -1,0 +1,47 @@
+import java.util.*;
+class N_Meetings_2
+{
+    int stime,ftime;
+	Activity_Selection_3(int stime, int ftime)
+	{
+		this.stime=stime;
+		this.ftime=ftime;
+	}
+}
+class Main
+{
+	public static void main(String args[]) 
+	{
+        Scanner sc = new Scanner(System.in);
+		System.out.println("Enter n value");
+		int n=sc.nextInt();
+		int start[]=new int[n];
+		int finish[]=new int[n];
+		System.out.println("Enter start array values ");
+		for(int i=0;i<n;i++)
+			start[i]=sc.nextInt();
+		System.out.println("Enter finish array values ");
+		for(int i=0;i<n;i++)
+			finish[i]=sc.nextInt();
+		int res=N_Meetings(n,start,finish);
+		System.out.println("result is : "+res);
+    }
+	public static int N_Meetings(int n, int start[], int finish[])
+	{
+		Activity_Selection_3 a[]=new Activity_Selection_3[n];
+		for(int i=0;i<n;i++)
+		{
+			a[i]=new Activity_Selection_3(start[i],finish[i]);
+		}
+		int ans=1,j=0;
+		for(int i=1;i<n;i++)
+		{
+			if(a[i].stime>a[j].ftime)
+			{
+				ans++;
+				j=i;
+			}
+		}
+		return ans;
+	}
+}

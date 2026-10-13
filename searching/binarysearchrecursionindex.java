@@ -1,0 +1,35 @@
+import java.util.*;
+class BSRcsursionIndex
+{
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter array length : ");
+		int n=sc.nextInt();
+		System.out.println("enter target : ");
+		int x=sc.nextInt();
+		System.out.println("enter array elements in sorted order: ");
+		int a[]=new int[n];
+		for(int i=0;i<n;i++)
+				a[i]=sc.nextInt();
+		int res = Bsearch(a,n,x ,0,n-1);
+		if(res!=-1)
+			System.out.println(res);
+		else
+			System.out.println(-1);
+	}
+	static int Bsearch(int a[],int n,int x,int l,int h)
+	{
+		
+		if(l>h)
+			return -1;
+		int mid=(l+h)/2;
+		if(a[mid]==x)
+			return mid;
+		else if(x>a[mid])
+			return Bsearch(a,n,x,mid+1,h);
+		else
+			return Bsearch(a,n,x,l,mid-1);
+	}
+}
+		
